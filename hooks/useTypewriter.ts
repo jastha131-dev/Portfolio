@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+/** `words` must be a stable reference (module-level constant or memoised) to avoid resetting the animation on every render. */
 export function useTypewriter(
   words: string[],
   speed = 100,
@@ -10,6 +11,7 @@ export function useTypewriter(
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
+    if (!words.length) return
     const current = words[wordIndex % words.length]
     let timeout: ReturnType<typeof setTimeout>
 

@@ -38,7 +38,7 @@ export default function Hero() {
             className="text-2xl text-slate-400 h-9 flex items-center gap-1"
           >
             <span>{typed}</span>
-            <span className="animate-pulse text-emerald-500 font-light">|</span>
+            <span className="motion-safe:animate-pulse text-emerald-500 font-light">|</span>
           </motion.div>
 
           <motion.div
@@ -75,7 +75,7 @@ export default function Hero() {
           transition={{ delay: 0.3, type: 'spring', stiffness: 100 }}
           className="hidden md:flex justify-center"
         >
-          <div className="relative w-72 h-72">
+          <div className="relative w-72 h-72" aria-hidden="true">
             <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-3xl animate-pulse" />
             <div className="relative w-full h-full rounded-full border-2 border-emerald-500/30 flex items-center justify-center bg-slate-800/30">
               <span className="text-8xl font-bold text-emerald-500/30 select-none">
