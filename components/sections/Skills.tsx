@@ -59,26 +59,30 @@ export default function Skills({ data }: { data: Skill[] }) {
                 {CATEGORY_LABELS[category]}
               </h3>
               <div className="space-y-4">
-                {(grouped[category] ?? []).map((skill, i) => (
-                  <motion.div
-                    key={skill._id}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: ci * 0.1 + i * 0.08,
-                      type: 'spring',
-                      stiffness: 200,
-                      damping: 20,
-                    }}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="text-xl w-7 text-center" aria-hidden="true">
-                      {SKILL_ICONS[skill.name] ?? '◆'}
-                    </span>
-                    <span className="text-sm font-medium">{skill.name}</span>
-                  </motion.div>
-                ))}
+                {(grouped[category] ?? []).length === 0 ? (
+                  <p className="text-slate-500 text-sm">No skills listed.</p>
+                ) : (
+                  (grouped[category] ?? []).map((skill, i) => (
+                    <motion.div
+                      key={skill._id}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: ci * 0.1 + i * 0.08,
+                        type: 'spring',
+                        stiffness: 200,
+                        damping: 20,
+                      }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="text-xl w-7 text-center" aria-hidden="true">
+                        {SKILL_ICONS[skill.name] ?? '◆'}
+                      </span>
+                      <span className="text-sm font-medium">{skill.name}</span>
+                    </motion.div>
+                  ))
+                )}
               </div>
             </motion.div>
           ))}

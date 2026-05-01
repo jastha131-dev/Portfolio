@@ -57,6 +57,8 @@ export default function Projects({ data }: { data: Project[] }) {
               <SkeletonCard key={i} />
             ))}
           </div>
+        ) : filtered.length === 0 ? (
+          <p className="text-slate-400 text-sm py-8">No projects match this filter.</p>
         ) : (
           <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((project, i) => (
@@ -66,7 +68,7 @@ export default function Projects({ data }: { data: Project[] }) {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                transition={{ delay: Math.min(i * 0.08, 0.4) }}
               >
                 <ProjectCard project={project} />
               </motion.div>

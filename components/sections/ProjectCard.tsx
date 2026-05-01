@@ -62,7 +62,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="flex items-center gap-1 text-sm text-slate-400 hover:text-emerald-500 transition-colors"
             >
-              <ExternalLink size={16} /> Live Demo
+              <ExternalLink size={16} aria-hidden="true" /> Live Demo
             </a>
           )}
         </div>

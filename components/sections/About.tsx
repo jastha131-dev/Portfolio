@@ -53,7 +53,7 @@ export default function About({ data }: { data: AboutType | null }) {
             className="space-y-6"
           >
             <div className="flex items-center gap-2 text-sm text-slate-400">
-              <MapPin size={16} className="text-emerald-500" />
+              <MapPin size={16} className="text-emerald-500" aria-hidden="true" />
               <span>{data?.location ?? 'Dubai'}</span>
             </div>
 
@@ -65,7 +65,7 @@ export default function About({ data }: { data: AboutType | null }) {
             {data?.cvUrl && (
               <a href={data.cvUrl} target="_blank" rel="noopener noreferrer">
                 <Button className="inline-flex items-center gap-2">
-                  <Download size={16} />
+                  <Download size={16} aria-hidden="true" />
                   Download CV
                 </Button>
               </a>

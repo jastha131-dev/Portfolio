@@ -8,7 +8,7 @@ export interface Project {
   title: string
   slug: { current: string }
   description: string
-  image: SanityImage
+  image?: SanityImage
   techStack: string[]
   githubUrl: string
   liveUrl: string

@@ -11,7 +11,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`)
-    const body = encodeURIComponent(form.message)
+    const body = encodeURIComponent(`From: ${form.email}\n\n${form.message}`)
     window.location.href = `mailto:astha@californiamediauae.com?subject=${subject}&body=${body}`
   }
 
@@ -49,6 +49,7 @@ export default function Contact() {
                 <Mail
                   size={20}
                   className="text-emerald-500 group-hover:scale-110 transition-transform"
+                  aria-hidden="true"
                 />
                 astha@californiamediauae.com
               </a>

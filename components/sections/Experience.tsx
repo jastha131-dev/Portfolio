@@ -61,7 +61,7 @@ export default function Experience({ data }: { data: ExperienceType[] }) {
                         </p>
                         <ul className="space-y-1">
                           {exp.bullets?.map((b, bi) => (
-                            <li key={bi} className="text-sm text-slate-300">
+                            <li key={`${exp._id}-${bi}`} className="text-sm text-slate-300">
                               • {b}
                             </li>
                           ))}
@@ -89,7 +89,7 @@ export default function Experience({ data }: { data: ExperienceType[] }) {
                         </p>
                         <ul className="space-y-1">
                           {exp.bullets?.map((b, bi) => (
-                            <li key={bi} className="text-sm text-slate-300">
+                            <li key={`${exp._id}-${bi}`} className="text-sm text-slate-300">
                               • {b}
                             </li>
                           ))}
