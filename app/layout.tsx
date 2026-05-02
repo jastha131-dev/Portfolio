@@ -9,16 +9,16 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Astha Jain — Web Developer & Designer',
   description:
-    'Full Stack Developer based in Dubai. Building modern web applications with Next.js, React, and Node.js.',
+    'Full Stack Developer & UI Designer. Building modern web applications with Next.js, React, and Node.js.',
   openGraph: {
     title: 'Astha Jain — Web Developer & Designer',
-    description: 'Full Stack Developer based in Dubai.',
+    description: 'Full Stack Developer & UI Designer.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Astha Jain — Web Developer & Designer',
-    description: 'Full Stack Developer based in Dubai.',
+    description: 'Full Stack Developer & UI Designer.',
   },
 }
 
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <Navbar />
           {children}
         </ThemeProvider>
