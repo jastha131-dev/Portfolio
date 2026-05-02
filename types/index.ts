@@ -20,6 +20,13 @@ export interface About {
   profileImage: SanityImage
   cvUrl?: string
   location: string
+  email?: string
+  whatsappNumber?: string
+  githubUrl?: string
+  linkedinUrl?: string
+  yearsExperience?: string
+  projectsCount?: string
+  technologiesCount?: string
 }
 
 export interface Skill {

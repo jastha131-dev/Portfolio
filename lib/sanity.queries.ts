@@ -15,7 +15,11 @@ export async function getProjects(): Promise<Project[]> {
 
 export async function getAbout(): Promise<About | null> {
   return client.fetch(
-    `*[_type == "about"][0] { bio, profileImage, cvUrl, location }`,
+    `*[_type == "about"][0] {
+      bio, profileImage, cvUrl, location,
+      email, whatsappNumber, githubUrl, linkedinUrl,
+      yearsExperience, projectsCount, technologiesCount
+    }`,
     {},
     revalidate,
   )

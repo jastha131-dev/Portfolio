@@ -22,13 +22,13 @@ export default async function Home() {
 
   return (
     <main>
-      <Hero />
+      <Hero about={about} />
       <About data={about} />
       <Projects data={projects} />
       <Skills data={skills} />
       <Experience data={experience} />
-      <Contact />
-      <Footer />
+      <Contact data={about} />
+      <Footer about={about} />
     </main>
   )
 }
