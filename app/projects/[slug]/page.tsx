@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: Props) {
 
   const idx = allProjects.findIndex((p) => p.slug.current === slug)
   const prevProject = idx > 0 ? allProjects[idx - 1] : null
-  const nextProject = idx < allProjects.length - 1 ? allProjects[idx + 1] : null
+  const nextProject = idx !== -1 && idx < allProjects.length - 1 ? allProjects[idx + 1] : null
 
   return (
     <ProjectDetail

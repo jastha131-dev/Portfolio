@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -18,6 +18,13 @@ interface Props {
 
 export default function ProjectDetail({ project, prevProject, nextProject }: Props) {
   const [lightboxSrc, setLightboxSrc] = useState<{ src: string; alt: string } | null>(null)
+
+  useEffect(() => {
+    if (!lightboxSrc) return
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightboxSrc(null) }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [lightboxSrc])
 
   return (
     <main className="min-h-screen">
@@ -272,11 +279,15 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
             onClick={() => setLightboxSrc(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image lightbox"
           >
             <button
               onClick={(e) => { e.stopPropagation(); setLightboxSrc(null) }}
               className="absolute top-4 right-4 text-white/70 hover:text-white p-2"
               aria-label="Close lightbox"
+              autoFocus
             >
               <X size={24} />
             </button>

@@ -36,16 +36,19 @@ const components = {
         {children}
       </code>
     ),
-    link: ({ value, children }: { value?: { href?: string }; children?: React.ReactNode }) => (
-      <a
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-emerald-500 hover:underline"
-      >
-        {children}
-      </a>
-    ),
+    link: ({ value, children }: { value?: { href?: string }; children?: React.ReactNode }) => {
+      const href = /^https?:\/\//i.test(value?.href ?? '') ? value!.href! : '#'
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-emerald-500 hover:underline"
+        >
+          {children}
+        </a>
+      )
+    },
   },
 }
 
