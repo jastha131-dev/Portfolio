@@ -12,8 +12,8 @@ export interface Project {
   description: string
   image?: SanityImage
   techStack: string[]
-  githubUrl: string
-  liveUrl: string
+  githubUrl?: string
+  liveUrl?: string
   featured: boolean
   role?: string
   body?: PortableTextBlock[]

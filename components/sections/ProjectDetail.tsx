@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function ProjectDetail({ project, prevProject, nextProject }: Props) {
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+  const [lightboxSrc, setLightboxSrc] = useState<{ src: string; alt: string } | null>(null)
 
   return (
     <main className="min-h-screen">
@@ -200,7 +200,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
                 return (
                   <button
                     key={i}
-                    onClick={() => setLightboxSrc(src)}
+                    onClick={() => setLightboxSrc({ src, alt: img.alt ?? `${project.title} screenshot ${i + 1}` })}
                     className="relative aspect-video rounded-xl overflow-hidden group cursor-zoom-in border border-slate-200 dark:border-white/8 hover:border-emerald-500/40 transition-colors"
                     aria-label={`View image ${i + 1}`}
                   >
@@ -231,7 +231,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
                 href={`/projects/${prevProject.slug.current}`}
                 className="group flex items-center gap-3 rounded-2xl border border-slate-200 dark:border-white/8 p-4 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 bg-white dark:bg-slate-800/40"
               >
-                <ArrowLeft size={18} className="text-slate-400 group-hover:text-emerald-500 transition-colors flex-shrink-0 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
+                <ArrowLeft size={18} className="text-slate-400 group-hover:text-emerald-500 flex-shrink-0 group-hover:-translate-x-1 transition-all" aria-hidden="true" />
                 <div className="min-w-0">
                   <p className="text-xs text-slate-400 mb-0.5">Previous</p>
                   <p className="font-semibold text-sm truncate group-hover:text-emerald-500 transition-colors">
@@ -254,7 +254,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
                     {nextProject.title}
                   </p>
                 </div>
-                <ArrowRight size={18} className="text-slate-400 group-hover:text-emerald-500 transition-colors flex-shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                <ArrowRight size={18} className="text-slate-400 group-hover:text-emerald-500 flex-shrink-0 group-hover:translate-x-1 transition-all" aria-hidden="true" />
               </Link>
             ) : (
               <div />
@@ -274,7 +274,7 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
             onClick={() => setLightboxSrc(null)}
           >
             <button
-              onClick={() => setLightboxSrc(null)}
+              onClick={(e) => { e.stopPropagation(); setLightboxSrc(null) }}
               className="absolute top-4 right-4 text-white/70 hover:text-white p-2"
               aria-label="Close lightbox"
             >
@@ -288,8 +288,8 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={lightboxSrc}
-                alt="Gallery image"
+                src={lightboxSrc.src}
+                alt={lightboxSrc.alt}
                 fill
                 className="object-contain"
                 sizes="100vw"
