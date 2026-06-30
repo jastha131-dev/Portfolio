@@ -16,6 +16,7 @@ export const projectSchema = defineType({
       options: { source: 'title' },
     }),
     defineField({ name: 'description', type: 'text' }),
+    defineField({ name: 'role', title: 'Your Role', type: 'string' }),
     defineField({
       name: 'image',
       type: 'image',
@@ -24,6 +25,28 @@ export const projectSchema = defineType({
         defineField({ name: 'alt', type: 'string', title: 'Alt text' }),
       ],
     }),
+    defineField({
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            defineField({ name: 'alt', type: 'string', title: 'Alt text' }),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'array',
+      of: [{ type: 'block' }],
+    }),
+    defineField({ name: 'challenges', title: 'Challenges', type: 'text' }),
+    defineField({ name: 'outcomes', title: 'Outcomes', type: 'text' }),
     defineField({
       name: 'techStack',
       type: 'array',
