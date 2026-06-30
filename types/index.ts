@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from '@portabletext/types'
+
 export interface SanityImage {
   asset: { _ref: string }
   alt?: string
@@ -13,6 +15,11 @@ export interface Project {
   githubUrl: string
   liveUrl: string
   featured: boolean
+  role?: string
+  body?: PortableTextBlock[]
+  challenges?: string
+  outcomes?: string
+  gallery?: SanityImage[]
 }
 
 export interface About {

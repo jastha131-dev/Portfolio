@@ -13,6 +13,17 @@ export async function getProjects(): Promise<Project[]> {
   )
 }
 
+export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  return client.fetch(
+    `*[_type == "project" && slug.current == $slug][0] {
+      _id, title, slug, description, image, techStack, githubUrl, liveUrl, featured,
+      role, body, challenges, outcomes, gallery
+    }`,
+    { slug },
+    revalidate,
+  )
+}
+
 export async function getAbout(): Promise<About | null> {
   return client.fetch(
     `*[_type == "about"][0] {
