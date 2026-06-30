@@ -20,6 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         href={`/projects/${project.slug.current}`}
         className="absolute inset-0 z-0"
         aria-label={`View ${project.title} details`}
+        tabIndex={-1}
       />
       <div className="relative h-48 overflow-hidden flex-shrink-0 bg-gradient-to-br from-slate-800 to-slate-900">
         {project.image ? (
