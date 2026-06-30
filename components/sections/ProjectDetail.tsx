@@ -28,24 +28,23 @@ export default function ProjectDetail({ project, prevProject, nextProject }: Pro
 
   return (
     <main className="min-h-screen">
-      {/* Back button */}
-      <div className="max-w-6xl mx-auto px-6 pt-8">
-        <Link
-          href="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-colors font-medium group"
-        >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
-          Back to Projects
-        </Link>
-      </div>
-
       {/* Hero */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative w-full h-72 md:h-96 mt-6 overflow-hidden"
+        className="relative w-full h-72 md:h-96 overflow-hidden"
       >
+        {/* Back button — overlaid on hero */}
+        <div className="absolute inset-x-0 top-[4.5rem] z-10 max-w-6xl mx-auto px-6">
+          <Link
+            href="/#projects"
+            className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors font-medium group"
+          >
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
+            Back to Projects
+          </Link>
+        </div>
         {project.image ? (
           <>
             <Image
